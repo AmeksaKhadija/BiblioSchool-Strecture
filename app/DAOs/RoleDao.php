@@ -11,7 +11,7 @@ class RoleDao {
             $role->setLogo("Default logo");
         }
 
-        $query = "INSERT INTO roles (role_name , role_description, logo) VALUES ( ' " . $role->getRoleName() . "', '" . $role->getDescription() . "', '" . $role->getLogo() . "');";
+        $query = "INSERT INTO roles (role_name , role_description, logo) VALUES ( '" . $role->getRoleName() . "', '" . $role->getDescription() . "', '" . $role->getLogo() . "');";
 
         // die($query);
 

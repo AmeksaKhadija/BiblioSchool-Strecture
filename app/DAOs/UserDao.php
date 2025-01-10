@@ -5,7 +5,7 @@ class UserDao {
 
 
     public function create(Utilisateur $user): Utilisateur{
-        $query = "INSERT INTO utilisateurs (firstname, lastname, email, password, photo, phone, role_id ) VALUES ( ' ". $user->getFirstname() . "' , ' " . $user->getLastname() . "' , ' ". $user->getEmail() . " ' , ' " . $user->getPassword() . "', ' " . $user->getPhoto() . " ' , ' " . $user->getPhone() . "' ,". $user->getRole()->getId() .  ");" ;
+        $query = "INSERT INTO utilisateurs (firstname, lastname, email, password, photo, phone, role_id ) VALUES ( '". $user->getFirstname() . "' , '" . $user->getLastname() . "' , '". $user->getEmail() . "' , '" . $user->getPassword() . "', '" . $user->getPhoto() . "' , '" . $user->getPhone() . "' ,". $user->getRole()->getId() .  ");" ;
 
         // die($query);
 

@@ -13,8 +13,11 @@ class Utilisateur {
     private string $photo = "";
     private Role $role;
     private $reservations = [];
+    private int $role_id = 0;
 
-    public function __construct () {}
+    public function __construct () {
+        $this->role = new Role();
+    }
 
     public static function instanceWithFirstnameAndLastname(string $firstName, string $lastName){
         $instance = new self();
@@ -22,6 +25,14 @@ class Utilisateur {
         $instance -> lastname = $lastName;
 
         return $instance ;
+    }
+    public static function instaceWithEmailAndPassword(string $email , string $password): self
+    {
+        $instance = new self();
+        $instance->email = $email;
+        $instance->password = $password;
+
+        return $instance;
     }
 
     public static function instanceWithFirstnameAndLastnameAndEmail(string $firstname, string $lastname, string $email) {
@@ -115,6 +126,8 @@ class Utilisateur {
         return $this->photo;
     }
 
+    // public function setRoleId($id)
+
     public function toStringWithFirstnameAndLastname() {    
         return "(Utilisateur) => id : " . $this->id . " , firstname : " . $this->firstname . " , lastname : " . $this->lastname ;
     }
@@ -122,7 +135,7 @@ class Utilisateur {
 
     public function __toString() {
         return $this->toStringWithFirstnameAndLastname() . 
-        " , phone : " .$this->phone . " , email : " . $this->email  . " , password : " . $this->password . " photo : " . $this->photo . " , Role : " . $this->role . " , reservation : [" . implode(",", $this->reservations)."]" ;
+        " , phone : " .$this->phone . " , email : " . $this->email  . " , password : " . $this->password . " photo : " . $this->photo . " , Role : " . $this->role . " , reservation : [" . implode(",", $this->reservations)."] , Role_ID : " . $this->role_id . "" ;
     }
 
     

@@ -59,10 +59,11 @@ class Role {
 
     public function __toString() {
         $id = $this->id ?? 0;
+        $name = $this->role_name ?? "";
         $description = $this->role_description ?? "";
         $logo = $this->logo ?? "";
 
-        return "(Role) => id : " . $id . " , name : " . $this->role_name . " , description : " . $description . " , logo : " . $logo;
+        return "(Role) => id : " . $id . " , name : " . $name . " , description : " . $description . " , logo : " . $logo;
     }
 
     

@@ -1,5 +1,5 @@
 <?php 
-
+include './../utils/Message.php';
 include_once './../app/Models/Role.php';
 include './../app/Models/Utilisateur.php';
 include './../app/Models/Categorie.php';
@@ -14,9 +14,17 @@ include './../app/DAOs/UserDao.php';
 include './../app/Repositories/Implementations/UserRepository.php';
 include './../app/Services/UserService.php';
 include './../app/Controllers/UserController.php';
+include './../app/http/RegisterForm.php';
+include './../app/http/LoginForm.php';
+include './../app/Services/AuthService.php';
+include './../app/Controllers/AuthController.php';
+
 
 
 class Test {
+    public function __construct() {
+        Message::in("Test Contructor");
+    }
     
     public function testRole() {
         echo "Role Test : ";
@@ -55,14 +63,41 @@ class Test {
         $this->display($livre);
 
 
-        $roleService = new RoleService();
-        $roleService->getRoleByName("Admin");
+        // $roleService = new RoleService();
+        // $roleService->getRoleByName("Admin");
 
 
         //User Test
         $userController = new UserController();
         $userCreated = $userController->createUtilisateur();
-        die($userCreated);
+    }
+
+    public function authTest() {
+        $registerForme = RegisterForm::instanceWithAllArgs(
+            "Walid" , 
+            "El karti" , 
+            "Walid1s@gmail.com",
+            "walidlove" , 
+            "walidlove" , 
+            "0607189671" , 
+            "photo.png");
+
+        $authController = new AuthController();
+        $authController->register($registerForme);
+        
+    }
+
+    public function loginTest() {
+        Message::in("méthode Login dans la classe Test");
+        $loginForm = LoginForm::instanceWithAllArgs("Walid1s@gmail.com", "walidlove");
+
+        
+        $authController = new AuthController();
+        Message::in("ceci est une instance de la classe authControlleur dans la méthode login TEst");
+        var_dump($authController);
+
+        $authController->login($loginForm);
+        
     }
 
     public function display($obj) {

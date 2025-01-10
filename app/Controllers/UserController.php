@@ -17,9 +17,9 @@ class UserController {
         $lastname = "last";
         $phone = "0607189671";
         $photo = "Logo.png";
-        $email = "adminssdsd@example.com";
+        $email = "adminsssdsd@example.com";
         $password = "998877";
-        $rolename = "Utilisateur";
+        $rolename = "Admin";
 
         $role = Role::instanceWithName($rolename);
 
